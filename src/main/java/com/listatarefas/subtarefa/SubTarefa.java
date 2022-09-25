@@ -1,5 +1,6 @@
 package com.listatarefas.subtarefa;
 
+import com.listatarefas.tarefa.Tarefa;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "subtarefas")
 @Getter
 @Setter
-public class SubTarefa {
+public class SubTarefa extends Tarefa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
