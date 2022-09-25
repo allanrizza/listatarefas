@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TAREFAS")
@@ -63,5 +64,18 @@ public class Tarefa {
         titulo = builder.titulo;
         descricao = builder.descricao;
         subtarefas = builder.subtarefas;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tarefa tarefa = (Tarefa) o;
+        return id.equals(tarefa.id) && titulo.equals(tarefa.titulo) && Objects.equals(descricao, tarefa.descricao) && Objects.equals(subtarefas, tarefa.subtarefas);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, titulo, descricao, subtarefas);
     }
 }
